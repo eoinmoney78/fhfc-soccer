@@ -16,7 +16,10 @@ const { db } = require('./db');
 
 app.use(express.json());
 app.use(cors());
+const { playerController, userController } = require('./controllers');
 
+app.use('/player', playerController);
+app.use('/user', userController);
 
 
 const server = async () => {
