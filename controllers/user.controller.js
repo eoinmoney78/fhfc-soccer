@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const { User } = require('..models');
+const bcrypt = require('bcrypt');
+const { User } = require('../models');
 
-const { validateSession } = require('..middleware');
+const { validateSession } = require('../middleware');
 
 
 // localhost:{{PORT}}/user/signup
@@ -13,7 +13,7 @@ router.post('/signup', async (req, res) => {
         const user = new User({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
-            email: req.body.lastName,
+            email: req.body.email,
             password: bcrypt.hashSync(req.body.password, 13),
             isAdmin: req.body.isAdmin || false
         });
@@ -59,6 +59,7 @@ router.post('/login', async (req, res) => {
             res.status(200).json({
                 user,
                 token,
+                message: 'Successful login',
                 isAdmin: user.isAdmin
             }) :
             res.status(404).json({
