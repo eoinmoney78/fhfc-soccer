@@ -1,11 +1,13 @@
 const router = require('express').Router();
-const { YouthSoccerPlayer } = require('../models');
+const { Player } = require('../models');
 const { validateSession } = require('../middleware');
 
 // Create a new soccer player
 router.post('/', validateSession, async (req, res) => {
     try {
-        const newPlayer = await YouthSoccerPlayer.create({
+        console.log('Creating a new player:', req.body);
+
+        const newPlayer = await Player.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             ageGroup: req.body.ageGroup,
@@ -32,7 +34,9 @@ router.post('/', validateSession, async (req, res) => {
 // Get all soccer players
 router.get('/getall/', validateSession, async (req, res) => {
     try {
-        const players = await YouthSoccerPlayer.find({});
+        console.log('Fetching all players');
+
+        const players = await Player.find({});
 
         console.log(`All players fetched:`, players);
         res.status(200).json({
@@ -49,7 +53,9 @@ router.get('/getall/', validateSession, async (req, res) => {
 // Get a specific player
 router.get('/:id', validateSession, async (req, res) => {
     try {
-        const player = await YouthSoccerPlayer.findById(req.params.id);
+        console.log('Fetching player with id:', req.params.id);
+
+        const player = await Player.findById(req.params.id);
 
         if (!player) {
             res.status(404).json({
@@ -72,7 +78,10 @@ router.get('/:id', validateSession, async (req, res) => {
 // Update a player
 router.put('/:id', validateSession, async (req, res) => {
     try {
-        const updatedPlayer = await YouthSoccerPlayer.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        console.log('Updating player with id:', req.params.id);
+        console.log('New player data:', req.body);
+
+        const updatedPlayer = await Player.findByIdAndUpdate(req.params.id, req.body, { new: true });
 
         if (!updatedPlayer) {
             res.status(404).json({
@@ -96,7 +105,9 @@ router.put('/:id', validateSession, async (req, res) => {
 // Delete a player
 router.delete('/:id', validateSession, async (req, res) => {
     try {
-        const deletedPlayer = await YouthSoccerPlayer.findByIdAndDelete(req.params.id);
+        console.log('Deleting player with id:', req.params.id);
+
+        const deletedPlayer = await Player.findByIdAndDelete(req.params.id);
 
         if (!deletedPlayer) {
             res.status(404).json({

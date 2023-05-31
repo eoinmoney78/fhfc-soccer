@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { User } = require('../models');
 
 const { validateSession } = require('../middleware');
@@ -10,6 +10,8 @@ const { validateSession } = require('../middleware');
 
 router.post('/signup', async (req, res) => {
     try {
+        console.log('Received signup request:', req.body);
+
         const user = new User({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -45,6 +47,8 @@ router.post('/signup', async (req, res) => {
 
 router.post('/login', async (req, res) => {
     try {
+        console.log('Received login request:', req.body);
+
         const { email, password } = req.body;
         const user = await User.findOne({ email: email });
 
@@ -75,6 +79,8 @@ router.post('/login', async (req, res) => {
 // localhost:{{PORT}}/user
 router.get('/', validateSession, async (req, res) => {
     try {
+        console.log('Fetching all users');
+
         const users = await User.find();
 
         users ?
@@ -95,15 +101,15 @@ router.get('/', validateSession, async (req, res) => {
 
 
 
-
-
 // localhost:{{PORT}}/user/me
 // Get the current user's data
 
 
 router.get('/me', validateSession, async (req, res) => {
     try {
+        console.log('Fetching current user:', req.user);
         const user = await User.findById(req.user.id).select('firstName lastName email isAdmin');
+
 
         if (!user) {
             console.log('User not found');
@@ -126,7 +132,4 @@ router.get('/me', validateSession, async (req, res) => {
 
 
 
-
-
 module.exports = router;
-
