@@ -10,7 +10,7 @@ const lightTheme = createTheme({
       main: red[500],
     },
     background: {
-      paper: '#ffffff',
+      paper: '#fffff',
     },
     text: {
       primary: '#000000',

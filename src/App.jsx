@@ -2,8 +2,11 @@
 import './App.css';
 import Auth from './components/auth/Auth';
 import { useState, useEffect } from 'react';
-// import Dashboard from './components/dashboard/Dashboard';
-// import Home from './components/home/Home';
+import Dashboard from './components/dashboard/Dashboard';
+import Coaches from './components/coaches/Coaches';
+import Home from './components/home/Home';
+import Players from './components/players/Players';
+
 import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
@@ -108,9 +111,10 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Auth updateToken={updateToken} />} />
-        {/* <Route path="/home" element={<Home token={sessionToken}/>} />
-        <Route path="/dashboard" element={<Dashboard token={sessionToken}/>} /> */}
-       
+        <Route path="/home" element={<Home token={sessionToken}/>} />
+        <Route path="/dashboard" element={<Dashboard token={sessionToken}/>} />
+        <Route path="/coaches" element={<Coaches token={sessionToken}/>} />
+        <Route path="/players" element={<Players token={sessionToken}/>} />
       </Routes>
     </div>
   </ThemeProvider>

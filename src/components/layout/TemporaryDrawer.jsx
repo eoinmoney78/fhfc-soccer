@@ -99,7 +99,7 @@ export default function TemporaryDrawer({ sessionToken, setSessionToken }) {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Typography variant="h6" noWrap component="div">
-              Espressonist
+             FHFC
             </Typography>
           </Box>
         </Toolbar>
@@ -130,13 +130,18 @@ export default function TemporaryDrawer({ sessionToken, setSessionToken }) {
             </Link>
           </ListItem>
           <ListItem>
-            <Link to="/add-coffee">
-              <button> BLEND </button>
+            <Link to="/Coaches">
+              <button> COACHES </button>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/Players">
+              <button> ADD PLAYER  </button>
             </Link>
           </ListItem>
           <ListItem>
             <Link to="/dashboard">
-              <button> RECIPES </button>
+              <button> FHFC </button>
             </Link>
           </ListItem>
         </List>

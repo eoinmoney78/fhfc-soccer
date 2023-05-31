@@ -7,6 +7,7 @@ import { Button, TextField, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import FullButton from '../../button/FullButton';
 import { useNavigate } from 'react-router-dom';
+import { baseURL } from '../../../environment';
 
 console.log('PORT:', process.env.PORT)
 const SignupContainer = styled('div')({
