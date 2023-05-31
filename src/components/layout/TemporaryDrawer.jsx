@@ -135,7 +135,7 @@ export default function TemporaryDrawer({ sessionToken, setSessionToken }) {
             </Link>
           </ListItem>
           <ListItem>
-            <Link to="/Players">
+            <Link to="/add-player">
               <button> ADD PLAYER  </button>
             </Link>
           </ListItem>

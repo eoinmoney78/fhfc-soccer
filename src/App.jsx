@@ -5,7 +5,9 @@ import { useState, useEffect } from 'react';
 import Dashboard from './components/dashboard/Dashboard';
 import Coaches from './components/coaches/Coaches';
 import Home from './components/home/Home';
-import Players from './components/players/Players';
+
+
+import PlayerPage from './components/players/PlayerPage';
 
 import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -111,10 +113,20 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Auth updateToken={updateToken} />} />
+
         <Route path="/home" element={<Home token={sessionToken}/>} />
-        <Route path="/dashboard" element={<Dashboard token={sessionToken}/>} />
+
         <Route path="/coaches" element={<Coaches token={sessionToken}/>} />
-        <Route path="/players" element={<Players token={sessionToken}/>} />
+
+
+      
+
+        <Route path="/add-player" element={<PlayerPage token={sessionToken} title={"New Player"} method={'POST'} />} />
+
+<Route path="/edit-player/:id" element={<PlayerPage token={sessionToken} title={"Edit Player"} method={'PUT'} />} />
+        <Route path="/dashboard" element={<Dashboard token={sessionToken}/>} />
+
+
       </Routes>
     </div>
   </ThemeProvider>
