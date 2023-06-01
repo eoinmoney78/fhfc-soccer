@@ -124,6 +124,7 @@ function App() {
         <Route path="/add-player" element={<PlayerPage token={sessionToken} title={"New Player"} method={'POST'} />} />
 
 <Route path="/edit-player/:id" element={<PlayerPage token={sessionToken} title={"Edit Player"} method={'PUT'} />} />
+
         <Route path="/dashboard" element={<Dashboard token={sessionToken}/>} />
 
 

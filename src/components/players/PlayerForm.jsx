@@ -88,8 +88,13 @@ function PlayerForm(props) {
       favoritePlayer,
       img: uploadedUrl || cloudinaryUrl,
     };
+    console.log('coffeeData:', playerData);
+    console.log('Sending image to Cloudinary...');
+    console.log("cloudinaryUrl:", cloudinaryUrl);
+  
 
     try {
+      console.log('Sending player data to server...');
       const response = await fetch(props.url, {
         method: props.method,
         headers: {

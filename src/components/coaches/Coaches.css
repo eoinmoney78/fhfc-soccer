@@ -1,0 +1,10 @@
+/* .about-text {
+    max-width: 400px;
+    margin: 0 auto; 
+} */
+
+.about-text {
+    max-width: 80%;
+    margin: 0 auto;
+  }
+  

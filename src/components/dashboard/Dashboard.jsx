@@ -5,7 +5,6 @@ import { baseURL } from '../../environment';
 import PlayerDetails from '../players/PlayerDetails';
 import TemporaryDrawer from '../layout/TemporaryDrawer';
 import { Image } from 'cloudinary-react';
-import Rating from '@mui/lab/Rating';
 
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
@@ -139,51 +138,17 @@ const Dashboard = () => {
     }
   };
 
-  const handleRatingChange = async (id, newRating) => {
-    const url = `${baseURL}/player/${id}/rating`;
-
-    try {
-      const response = await fetch(url, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `${localStorage.getItem('token')}`,
-        },
-        body: JSON.stringify({ rating: newRating }),
-      });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to update player rating');
-      }
-
-      const updatedPlayerData = playerData.map((player) => {
-        if (player._id === id) {
-          return { ...player, rating: newRating };
-        }
-        return player;
-      });
-      setPlayerData(updatedPlayerData);
-
-      const updatedFilteredPlayers = filteredPlayers.map((player) => {
-        if (player._id === id) {
-          return { ...player, rating: newRating };
-        }
-        return player;
-      });
-      setFilteredPlayers(updatedFilteredPlayers);
-
-      alert('Player rating updated successfully!');
-    } catch (error) {
-      console.error('Error updating player rating:', error);
-    }
-  };
-
   return (
-    <Box sx={{ bgcolor: 'background.default' }} style={{ minHeight: "100vh" }}>
+    // <Box sx={{ bgcolor: 'background.paper' }} style={{ minHeight: "100vh" }}>
+
+<Box sx={{ bgcolor: '#E0E0E0' }} style={{ minHeight: "100vh" }}>
+
+
+
       <Container maxWidth="lg">
         <nav>
           <Typography variant="h4" component="h2" align="center" color="textSecondary" style={{ paddingTop: "20px", fontWeight: "lighter" }}>
-            Dashboard
+            SLATE VALLEY UNITED
           </Typography>
           <TemporaryDrawer />
         </nav>
@@ -244,10 +209,6 @@ const Dashboard = () => {
                         crop="scale"
                         style={{ borderRadius: '50%' }}
                       />
-                      <Rating
-                        value={player.rating}
-                        onChange={(event, newRating) => handleRatingChange(player._id, newRating)}
-                      />
                     </CardContent>
                     <CardActions>
                       {currentUser && canEditDelete(player.userId) && (
@@ -264,7 +225,9 @@ const Dashboard = () => {
               ))}
             </Grid>
           ) : (
-            <p>No players found.</p>
+            <Typography variant="body1" align="center">
+              No players found.
+            </Typography>
           )}
         </div>
       </Container>

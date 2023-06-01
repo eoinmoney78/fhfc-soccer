@@ -44,6 +44,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
+  backgroundColor: 'royalblue',  // Add this line to set the color to royal blue
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -99,7 +100,7 @@ export default function TemporaryDrawer({ sessionToken, setSessionToken }) {
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
             <Typography variant="h6" noWrap component="div">
-             FHFC
+             SVUFC
             </Typography>
           </Box>
         </Toolbar>
@@ -141,7 +142,7 @@ export default function TemporaryDrawer({ sessionToken, setSessionToken }) {
           </ListItem>
           <ListItem>
             <Link to="/dashboard">
-              <button> FHFC </button>
+              <button> SVUFC </button>
             </Link>
           </ListItem>
         </List>

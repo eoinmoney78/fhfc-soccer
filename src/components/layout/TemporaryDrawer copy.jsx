@@ -32,9 +32,9 @@ export default function TemporaryDrawer() {
         >
 
 
-
+{/* 
             <List>
-                {['Home', 'My Coffee', 'Recipes', 'Search'].map((text, index) => (
+                {['Home', 'Coaches', 'Add Player', 'Svufc'].map((text, index) => (
                     <ListItem key={text} disablePadding>
                         <ListItemButton>
                             <ListItemIcon>
@@ -44,7 +44,7 @@ export default function TemporaryDrawer() {
                         </ListItemButton>
                     </ListItem>
                 ))}
-            </List>
+            </List> */}
             <Divider />
         </Box>
     );

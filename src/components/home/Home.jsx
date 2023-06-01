@@ -9,7 +9,7 @@ const Home = () => {
         <TemporaryDrawer />
       </nav> 
       <Typography variant="h2" component="h1" align="center" gutterBottom>
-      Fair Haven Football Club
+     SLATE VALLEY UNITED FOOTBALL CLUB
       </Typography>
       <nav>
       {/* <img src="https://res.cloudinary.com/dns9ltiu8/image/upload/v1682379643/coffee_beans-cup_nt08zx.jpg" alt="Cup of coffee with pile of coffee beans" width="400" height="250" /> */}

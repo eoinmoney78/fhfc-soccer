@@ -37,6 +37,30 @@ const PlayerPage = (params) => {
     }
   };
 
+  const handleDeletePlayer = async () => {
+    const url = `${baseURL}/player/${id}`;
+
+    try {
+      const response = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `${localStorage.getItem('token')}`,
+        },
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to delete player');
+      }
+
+      alert('Player deleted successfully!');
+      // Redirect to the dashboard after successful deletion
+      window.location.href = '/dashboard';
+    } catch (error) {
+      console.error('Error deleting player:', error);
+    }
+  };
+
   useEffect(() => {
     if (dataFetchedRef.current) return;
     dataFetchedRef.current = true;
@@ -74,6 +98,8 @@ const PlayerPage = (params) => {
   console.log('Submit Button Text:', submitButtonText);
   console.log('Error Message:', errorMessage);
 
+
+  
   return (
     <Container maxWidth="xs">
       <TemporaryDrawer />
@@ -93,6 +119,11 @@ const PlayerPage = (params) => {
             Return to Dashboard
           </Button>
         </Link>
+        {params.method === 'PUT' && (
+          <Button variant="contained" color="secondary" onClick={handleDeletePlayer} style={{ marginLeft: '1rem' }}>
+            Delete Player
+          </Button>
+        )}
       </Box>
     </Container>
   );
