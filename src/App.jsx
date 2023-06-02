@@ -116,7 +116,7 @@ function App() {
 
         <Route path="/home" element={<Home token={sessionToken}/>} />
 
-        <Route path="/coaches" element={<Coaches token={sessionToken}/>} />
+        <Route path="/coaches" element={<Coaches mode={mode} token={sessionToken} />} />
 
 
       

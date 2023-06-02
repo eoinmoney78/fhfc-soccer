@@ -4,7 +4,7 @@ import footballEmblem2 from '../../images/football-emblem-2.png';
 
 import './Coaches.css';
 
-function Coaches() {
+function Coaches({ mode }) {
   const [coaches, setCoaches] = useState([
     { 
       name: 'Dave Carabino', 
@@ -19,18 +19,23 @@ function Coaches() {
     // ... more coaches
   ]);
 
+
+  const containerStyle = mode === 'dark' ? { backgroundColor: '#424242' } : { backgroundColor: '#E0E0E0' };
+
   return (
-    <div>
-      <h1>Coaches</h1>
-      {coaches && coaches.map((coach, index) => (
-     <div key={index}>
-     <h2>{coach.name}</h2>
-     <img src={coach.img} alt={coach.name} width="200" />
-     <p className="about-text">{coach.about}</p>  
-   </div>
-      ))}
-    </div>
-  );
+    <div className="coaches-container" style={containerStyle}>
+    <h1>Coaches</h1>
+    {coaches && coaches.map((coach, index) => (
+      <div key={index}>
+        <h2>{coach.name}</h2>
+        <img src={coach.img} alt={coach.name} width="200" />
+        <p className="about-text">{coach.about}</p>  
+      </div>
+    ))}
+  </div>
+);
 }
+
+
 
 export default Coaches;

@@ -5,15 +5,15 @@ import { baseURL } from '../../environment';
 import PlayerDetails from '../players/PlayerDetails';
 import TemporaryDrawer from '../layout/TemporaryDrawer';
 import { Image } from 'cloudinary-react';
-
+import './Dashboard.css';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
-const Dashboard = () => {
+const Dashboard = ({ mode }) => {
   const [playerData, setPlayerData] = useState([]);
   const [currentUser, setCurrentUser] = useState(null);
   const [showHint, setShowHint] = useState(true);
-  const [mode] = useState('light');
+  // const [mode] = useState('light');
   const [userId] = useState(localStorage.getItem('user_id'));
   const [search, setSearch] = useState('');
   const [filteredPlayers, setFilteredPlayers] = useState([]);
@@ -141,8 +141,10 @@ const Dashboard = () => {
   return (
     // <Box sx={{ bgcolor: 'background.paper' }} style={{ minHeight: "100vh" }}>
 
-<Box sx={{ bgcolor: '#E0E0E0' }} style={{ minHeight: "100vh" }}>
-
+<Box 
+  className={`container ${mode === 'dark' ? 'dark-mode' : ''}`} 
+  style={{ minHeight: "100vh" }}
+>
 
 
       <Container maxWidth="lg">
