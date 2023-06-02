@@ -1,24 +1,56 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, TextField, Button, Grid } from '@mui/material';
-import { DateTimePicker } from '@mui/lab';
+import { baseURL } from '../../environment';
 
 function News() {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [news, setNews] = useState([]);
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
   const [schedule, setSchedule] = useState(new Date());
 
-  const handleSubmit = (e) => {
+  useEffect(() => {
+    fetchNews();
+  }, []);
+
+  const fetchNews = async () => {
+    try {
+      const response = await fetch(`${baseURL}/news`); // Use the baseURL
+      const data = await response.json();
+      setNews(data);
+    } catch (error) {
+      console.error('Error fetching news:', error);
+    }
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // TODO: call your API to store the news
-    // you'll need to handle the date and time format to fit your backend
     const newsData = {
       title,
-      content,
-      schedule
+      body: content,
+      dateToPublish: schedule,
     };
 
-    console.log(newsData); // Debug: ensure we're capturing the data correctly
+    try {
+      const response = await fetch(`${baseURL}/news/create`, { // Use the baseURL
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ news: newsData }),
+      });
+
+      if (response.ok) {
+        setTitle('');
+        setContent('');
+        setSchedule(new Date());
+        fetchNews();
+      } else {
+        console.error('Failed to create news:', response.status);
+      }
+    } catch (error) {
+      console.error('Error creating news:', error);
+    }
   };
 
   return (
@@ -46,12 +78,13 @@ function News() {
             />
           </Grid>
           <Grid item>
-            <DateTimePicker
+            <TextField
               label="Schedule"
-              inputFormat="MM/dd/yyyy hh:mm a"
+              type="datetime-local"
+              variant="outlined"
+              fullWidth
               value={schedule}
-              onChange={setSchedule}
-              renderInput={(params) => <TextField {...params} />}
+              onChange={(e) => setSchedule(e.target.value)}
             />
           </Grid>
           <Grid item>
@@ -61,6 +94,15 @@ function News() {
           </Grid>
         </Grid>
       </form>
+
+      <h2>News Entries</h2>
+      {news.map((entry) => (
+        <div key={entry._id}>
+          <h3>{entry.title}</h3>
+          <p>{entry.body}</p>
+          <p>Date to Publish: {entry.dateToPublish}</p>
+        </div>
+      ))}
     </Container>
   );
 }

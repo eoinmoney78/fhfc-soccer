@@ -5,7 +5,7 @@ import { baseURL } from '../../environment';
 import PlayerDetails from '../players/PlayerDetails';
 import TemporaryDrawer from '../layout/TemporaryDrawer';
 import { Image } from 'cloudinary-react';
-import './Dashboard.css';
+import './Dashboard.css'
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
@@ -139,12 +139,10 @@ const Dashboard = ({ mode }) => {
   };
 
   return (
-    // <Box sx={{ bgcolor: 'background.paper' }} style={{ minHeight: "100vh" }}>
+    <Box sx={{ bgcolor: 'background.paper' }} style={{ minHeight: "100vh" }}>
 
-<Box 
-  className={`container ${mode === 'dark' ? 'dark-mode' : ''}`} 
-  style={{ minHeight: "100vh" }}
->
+    {/* // <Box sx={{ bgcolor: mode === 'dark' ? '#000000' : '#E0E0E0' }} style={{ minHeight: "100vh" }}> */}
+
 
 
       <Container maxWidth="lg">
