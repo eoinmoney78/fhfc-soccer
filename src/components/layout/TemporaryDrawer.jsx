@@ -44,7 +44,7 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
-  backgroundColor: 'royalblue',  // Add this line to set the color to royal blue
+  backgroundColor: '#000080',  // Update this line to set the color to a darker blue
   transition: theme.transitions.create(['margin', 'width'], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
@@ -143,6 +143,11 @@ export default function TemporaryDrawer({ sessionToken, setSessionToken }) {
           <ListItem>
             <Link to="/dashboard">
               <button> SVUFC </button>
+            </Link>
+          </ListItem>
+          <ListItem>
+            <Link to="/News">
+              <button> NEWS </button>
             </Link>
           </ListItem>
         </List>

@@ -5,7 +5,7 @@ import { useState, useEffect } from 'react';
 import Dashboard from './components/dashboard/Dashboard';
 import Coaches from './components/coaches/Coaches';
 import Home from './components/home/Home';
-
+import News from './components/news/News';
 
 import PlayerPage from './components/players/PlayerPage';
 
@@ -126,6 +126,8 @@ function App() {
 <Route path="/edit-player/:id" element={<PlayerPage token={sessionToken} title={"Edit Player"} method={'PUT'} />} />
 
         <Route path="/dashboard" element={<Dashboard token={sessionToken}/>} />
+
+        <Route path="/news" element={<News token={sessionToken} />} />
 
 
       </Routes>
