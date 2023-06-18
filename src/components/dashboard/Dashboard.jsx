@@ -5,7 +5,7 @@ import { baseURL } from '../../environment';
 import PlayerDetails from '../players/PlayerDetails';
 import TemporaryDrawer from '../layout/TemporaryDrawer';
 import { Image } from 'cloudinary-react';
-import './Dashboard.css'
+
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 
