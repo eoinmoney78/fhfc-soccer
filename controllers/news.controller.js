@@ -54,12 +54,18 @@ router.get('/:id', async (req, res) => {
 // Update a news entry
 router.put('/:id', validateSession, async (req, res) => {
     const { title, body, dateToPublish } = req.body.news;
+    const { id } = req.user;
 
     try {
         const existingNews = await News.findById(req.params.id);
 
         if (!existingNews) {
             return res.status(404).json({ message: 'News not found' });
+        }
+
+        // convert both sides to string for proper comparison
+        if (existingNews.postedBy.toString() !== id.toString()) {
+            return res.status(403).json({ message: 'Cannot update news posted by others' });
         }
 
         const updatedNews = await News.findByIdAndUpdate(
@@ -67,33 +73,41 @@ router.put('/:id', validateSession, async (req, res) => {
             { title, body, dateToPublish },
             { new: true }
         );
-        res.status(200).json({
+
+        res.status(204).json({
             message: "News updated successfully",
             news: updatedNews,
         });
     } catch (error) {
+        console.error('Error updating news:', error);
         res.status(500).json({
             message: `Failed to update news: ${error}`,
         });
     }
 });
 
-
-// Delete a news entry
 router.delete('/:id', validateSession, async (req, res) => {
     try {
+        const { id } = req.user;
         const existingNews = await News.findById(req.params.id);
 
         if (!existingNews) {
             return res.status(404).json({ message: 'News not found' });
         }
 
+        // convert both sides to string for proper comparison
+        if (existingNews.postedBy.toString() !== id.toString()) {
+            return res.status(403).json({ message: 'Cannot delete news posted by others' });
+        }
+
         await News.findByIdAndDelete(req.params.id);
-        res.status(200).json({ message: 'News deleted successfully' });
+        res.status(204).json({ message: 'News deleted successfully' });
     } catch (error) {
+        console.error('Error deleting news:', error);
         res.status(500).json({
             message: `Failed to delete news: ${error}`,
         });
     }
 });
+
 module.exports = router;
