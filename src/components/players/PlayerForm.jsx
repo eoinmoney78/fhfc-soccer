@@ -88,7 +88,7 @@ function PlayerForm(props) {
       favoritePlayer,
       img: uploadedUrl || cloudinaryUrl,
     };
-    console.log('coffeeData:', playerData);
+    console.log('playerinfo:', playerData);
     console.log('Sending image to Cloudinary...');
     console.log("cloudinaryUrl:", cloudinaryUrl);
   

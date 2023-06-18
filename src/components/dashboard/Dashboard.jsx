@@ -149,13 +149,15 @@ const Dashboard = ({ mode }) => {
         <nav>
           <Typography variant="h4" component="h2" align="center" color="textSecondary" style={{ paddingTop: "20px", fontWeight: "lighter" }}>
             SLATE VALLEY UNITED
+            <br />
+            PLAYERS & MEMBERS
           </Typography>
           <TemporaryDrawer />
         </nav>
 
-        <Typography variant="h2" component="h1" align="center" gutterBottom style={{ color: mode === "dark" ? "white" : "inherit" }}>
+        {/* <Typography variant="h2" component="h1" align="center" gutterBottom style={{ color: mode === "dark" ? "white" : "inherit" }}>
           Welcome, {currentUser ? currentUser.firstName + ' ' + currentUser.lastName : 'Guest'}!
-        </Typography>
+        </Typography> */}
 
         <div>
           <br />
