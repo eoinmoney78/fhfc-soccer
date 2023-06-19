@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Container, TextField, Button, Grid } from '@mui/material';
+import { Container, TextField, Button, Grid, Typography } from '@mui/material';
 import { baseURL } from '../../environment';
-// import Calendar from 'react-calendar';
-// import 'react-calendar/dist/Calendar.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -73,12 +71,7 @@ function News() {
     }
   };
 
-  //     const isAdmin = await adminResponse.json();
-  //     setIsAdmin(isAdmin);
-  //   } catch (error) {
-  //     console.error('Error fetching news:', error);
-  //   }
-  // };
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -214,8 +207,9 @@ function News() {
           </Grid>
         </form>
       )}
-  
-      <h2>Slate Valley United News </h2>
+  <h2 style={{ fontFamily: 'Arial, sans-serif', fontSize: '24px', fontWeight: 'bold' }}>
+        Slate Valley United News
+      </h2>
       <DatePicker
         selected={selectedDate}
         onChange={setSelectedDate}
@@ -224,9 +218,11 @@ function News() {
       />
       {news.map((entry) => (
         <div key={entry._id}>
-          <h3>{entry.title}</h3>
-          <p>{entry.body}</p>
-          <p>Date to Publish: {new Date(entry.dateToPublish).toLocaleString()}</p>
+          <Typography variant="h4" gutterBottom>{entry.title}</Typography>
+          <Typography variant="body1">{entry.body}</Typography>
+          <Typography variant="body2" color="textSecondary">
+            Date to Publish: {new Date(entry.dateToPublish).toLocaleString()}
+          </Typography>
           {isAdmin && (
             <div>
               <Button
@@ -247,17 +243,6 @@ function News() {
           )}
         </div>
       ))}
-
-
-  {/* <Calendar
-        value={selectedDate}
-        onChange={setSelectedDate}
-        tileContent={({ date }) =>
-          hasEventOnDate(date) ? (
-            <div style={{ backgroundColor: 'green', borderRadius: '50%' }}></div>
-          ) : null
-        }
-      /> */}
     </Container>
   );
 }
