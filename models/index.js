@@ -5,3 +5,4 @@ const Match = require('./match.model');
 module.exports = {
     Player, User, News, Match
 };
+
