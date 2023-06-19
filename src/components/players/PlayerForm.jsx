@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Image, CloudinaryContext, Transformation } from 'cloudinary-react';
 
 function PlayerForm(props) {
+  const isAuthenticated = !!localStorage.getItem('token');
   const [imageFile, setImageFile] = useState(null);
   const [cloudinaryUrl, setCloudinaryUrl] = useState('');
 
@@ -122,6 +123,11 @@ function PlayerForm(props) {
       <Typography variant="h6" gutterBottom>
         {props.title}
       </Typography>
+      {!isAuthenticated && (
+        <Typography variant="body1" color="error" gutterBottom>
+          You must be logged in to enter information.
+        </Typography>
+      )}
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <TextField

@@ -148,9 +148,9 @@ const Dashboard = ({ mode }) => {
       <Container maxWidth="lg">
         <nav>
           <Typography variant="h4" component="h2" align="center" color="textSecondary" style={{ paddingTop: "20px", fontWeight: "lighter" }}>
-            SLATE VALLEY UNITED
+            SLATE VALLEY UNITED F.C
             <br />
-            PLAYERS & MEMBERS
+            PLAYERS
           </Typography>
           <TemporaryDrawer />
         </nav>

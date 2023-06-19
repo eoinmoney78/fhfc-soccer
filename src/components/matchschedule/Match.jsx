@@ -12,8 +12,8 @@ import Button from '@mui/material/Button';
 function Match() {
   const [matches, setMatches] = useState([]);
   const [error, setError] = useState('');
-  const [editingMatch, setEditingMatch] = useState(null); // Track the currently editing match
-  const isAdmin = true; // Replace with your admin authentication logic
+  const [editingMatch, setEditingMatch] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false); // Replace with your admin authentication logic
 
   const fetchMatches = async () => {
     try {
@@ -34,6 +34,26 @@ function Match() {
 
   useEffect(() => {
     fetchMatches();
+  }, [isAdmin]);
+
+  useEffect(() => {
+    const fetchAdminStatus = async () => {
+      const adminResponse = await fetch(`${baseURL}/user/me`, {
+        method: 'GET',
+        headers: new Headers({
+          'Authorization': `${localStorage.getItem('token')}`,
+        }),
+      });
+
+      if (!adminResponse.ok) {
+        throw new Error(`Failed to fetch admin status, status = ${adminResponse.status}`);
+      }
+
+      const { user } = await adminResponse.json();
+      setIsAdmin(user.isAdmin);
+    }
+
+    fetchAdminStatus();
   }, []);
 
   const handleEdit = async (matchId) => {

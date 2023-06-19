@@ -41,6 +41,7 @@ function Login({ updateToken }) {
   const passwordRef = useRef();
   const navigate = useNavigate(); // Get the navigate function from react-router-dom
 
+
   const handleSubmit = async e => {
     e.preventDefault();
   
@@ -61,17 +62,19 @@ function Login({ updateToken }) {
       });
   
       const data = await res.json();
-      console.log('data:', data); // see the value of the data object
+      console.log('data:', data);
       emailRef.current.value = '';
       passwordRef.current.value = '';
   
       if (data.user && data) {
-        updateToken(data.token);
+        updateToken(data.token, data.user.admin); // send admin status along with the token
         console.log('DataToken:', data.user);
-      // see if the admin dashboard route is being navigated to
-
   
-        navigate('/dashboard'); // Navigate to the regular user dashboard route on successful login
+        if(data.user.admin) {
+          navigate('/dashboard'); // Navigate to the admin dashboard if user is an admin
+        } else {
+          navigate('/home'); // Navigate to the regular user dashboard route on successful login
+        }
       } else {
         alert('Try a different email or password');
       }
@@ -79,7 +82,11 @@ function Login({ updateToken }) {
       console.error(error);
     }
   };
-  
+
+
+
+
+
 
   return (
     <>
