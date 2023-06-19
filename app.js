@@ -18,11 +18,14 @@ const { db } = require('./db');
 
 app.use(express.json());
 app.use(cors());
-const { playerController, userController, newsController } = require('./controllers');
+const { playerController, userController, newsController, matchController } = require('./controllers');
 
 app.use('/user', userController);
 app.use('/player', playerController);
+app.use('/match', matchController);
+
 app.use('/news', newsController);
+
 
 app.post('/image/upload', upload.single('image'), (req, res) => {
     // req.file is the 'image' file
