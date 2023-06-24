@@ -25,7 +25,7 @@ router.post('/', validateSession, async (req, res) => {
 });
 
 // Get all coaches
-router.get('/getall/', validateSession, async (req, res) => {
+router.get('/getall/', async (req, res) => {
     try {
         const coaches = await Coach.find({});
 

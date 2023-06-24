@@ -32,7 +32,7 @@ router.post('/', validateSession, async (req, res) => {
 
 
 // Get all matches
-router.get('/getall', validateSession, async (req, res) => {
+router.get('/getall', async (req, res) => {
     try {
         console.log('Fetching all matches');
 
@@ -125,6 +125,30 @@ router.delete('/:id', validateSession, async (req, res) => {
         console.error(err);
         res.status(500).json({
             error: err.message,
+        });
+    }
+});
+router.get('/me', validateSession, async (req, res) => {
+    try {
+        console.log('Fetching current user:', req.user);
+        const user = await User.findById(req.user.id).select('firstName lastName email isAdmin');
+
+        if (!user) {
+            console.log('User not found');
+            res.status(404).json({
+                message: 'User not found'
+            });
+        } else {
+            console.log('Fetched current user:', user);
+            res.status(200).json({
+                user,
+                isAdmin: user.isAdmin
+            });
+        }
+    } catch (error) {
+        console.error('Error fetching current user:', error.message);
+        res.status(500).json({
+            error: error.message
         });
     }
 });
