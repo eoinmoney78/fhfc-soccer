@@ -10,6 +10,7 @@ const PlayerPage = (params) => {
   const dataFetchedRef = useRef(false);
 
   const { id } = useParams();
+  
 
   const fetchPlayer = async () => {
     try {

@@ -127,9 +127,16 @@ function CoachForm(props) {
       return '';
     }
   };
-
   return (
     <Container maxWidth="md">
+      <Typography variant="h4" component="h2" align="center" gutterBottom>
+        
+      </Typography>
+      {!isAdmin && (
+        <Typography variant="h6" align="center" color="secondary">
+          Must be admin to add Coaches
+        </Typography>
+      )}
       {isAdmin && (
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2} direction="column">
@@ -170,26 +177,25 @@ function CoachForm(props) {
             <Grid item xs={12}>
               <Button type="submit" variant="contained" color="primary">
                 Add Coach
-
               </Button>
             </Grid>
           </Grid>
         </form>
       )}
-    {coaches.map((coach) => (
-  <div key={coach._id}>
-    <Typography variant="h4" gutterBottom>
-      {coach.name}
-    </Typography>
-    {coach.img && (
-      <CloudinaryContext cloudName="dns9ltiu8">
-        <Image publicId={props.initialValues.img} width="300" crop="scale">
-          <Transformation quality="auto" fetchFormat="auto" />
-        </Image>
-      </CloudinaryContext>
-    )}
-  </div>
-))}
+      {coaches.map((coach) => (
+        <div key={coach._id}>
+          <Typography variant="h4" gutterBottom>
+            {coach.name}
+          </Typography>
+          {coach.img && (
+            <CloudinaryContext cloudName="dns9ltiu8">
+              <Image publicId={props.initialValues.img} width="300" crop="scale">
+                <Transformation quality="auto" fetchFormat="auto" />
+              </Image>
+            </CloudinaryContext>
+          )}
+        </div>
+      ))}
     </Container>
   );
 }

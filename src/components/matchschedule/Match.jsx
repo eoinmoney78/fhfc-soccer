@@ -129,7 +129,7 @@ function Match() {
       <Grid container spacing={3}>
         {matches.map((match) => (
           <Grid item xs={12} md={6} lg={4} key={match._id}>
-            <Card sx={{ backgroundColor: 'lightblue' }}>
+            <Card sx={{ backgroundColor: 'royalblue' }}>
               <CardContent>
                 <Typography variant="body1">
                   Date: {new Date(match.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}

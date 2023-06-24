@@ -132,7 +132,7 @@ export default function TemporaryDrawer({ sessionToken, setSessionToken }) {
           </ListItem>
           <ListItem>
             <Link to="/coach-dashboard">
-              <button> COACH-DASHBOARD</button>
+              <button> COACHES</button>
             </Link>
           </ListItem>
     
@@ -147,13 +147,13 @@ export default function TemporaryDrawer({ sessionToken, setSessionToken }) {
             </Link>
           </ListItem> */}
           <ListItem>
-            <Link to="/add-player">
-              <button> ADD PLAYER  </button>
+            <Link to="/dashboard">
+              <button> PLAYERS </button>
             </Link>
           </ListItem>
           <ListItem>
-            <Link to="/dashboard">
-              <button> SVUFC </button>
+            <Link to="/add-player">
+              <button> ADD PLAYER  </button>
             </Link>
           </ListItem>
           <ListItem>

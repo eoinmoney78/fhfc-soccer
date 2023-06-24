@@ -1,23 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Typography } from '@mui/material';
 import TemporaryDrawer from '../layout/TemporaryDrawer';
 
 const Home = () => {
+
+  useEffect(() => {
+    document.body.style.backgroundColor = 'royalblue';
+
+        // Change it back when the component is unmounted
+        return () => {
+          document.body.style.backgroundColor = null;
+        };
+      }, []);
   return (
-    <Container maxWidth="xs" style={{ backgroundColor: '#3498db', borderRadius: '10px' }}>
+    <Container maxWidth="xs" style={{ backgroundColor: '#3498db', borderRadius: '7px', overflow: 'auto' }}>
+ 
       <nav>
         <TemporaryDrawer />
       </nav> 
-      <Typography variant="h2" component="h1" align="center" gutterBottom>
+      <Typography variant="h6" component="h5" align="center" gutterBottom>
      SLATE VALLEY UNITED FOOTBALL CLUB
       </Typography>
       <nav>
-      {/* <img src="https://res.cloudinary.com/dns9ltiu8/image/upload/v1682379643/coffee_beans-cup_nt08zx.jpg" alt="Cup of coffee with pile of coffee beans" width="400" height="250" /> */}
-
+     
 
       </nav>
       <br />
-      <Typography variant="h4" component="h1" align="left" gutterBottom>
+      <Typography variant="h4" component="h5" align="left" gutterBottom>
         
       </Typography>
       <p>
