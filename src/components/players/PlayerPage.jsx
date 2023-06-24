@@ -92,11 +92,11 @@ const PlayerPage = (params) => {
     errorMessage = 'Error updating player:';
   }
 
-  console.log('Method:', method);
-  console.log('URL:', url);
-  console.log('Initial Values:', initialValues);
-  console.log('Submit Button Text:', submitButtonText);
-  console.log('Error Message:', errorMessage);
+  // console.log('Method:', method);
+  // console.log('URL:', url);
+  // console.log('Initial Values:', initialValues);
+  // console.log('Submit Button Text:', submitButtonText);
+  // console.log('Error Message:', errorMessage);
 
 
   

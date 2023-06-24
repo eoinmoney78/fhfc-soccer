@@ -21,7 +21,9 @@ function Auth(props) {
     setIsLoggedIn(true);
     setIsAdmin(admin);
     props.updateToken(token);
-  };
+
+
+};
 
   // const handleLogout = () => {
   //   setIsLoggedIn(false);

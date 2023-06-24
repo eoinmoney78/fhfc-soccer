@@ -20,7 +20,7 @@ const CoachPage = (params) => {
           headers: new Headers({
             'Authorization': `${localStorage.getItem('token')}`,
           }),
-          method: 'GET'
+          method: 'GET',
         });
 
         const data = await response.json();
@@ -94,26 +94,28 @@ const CoachPage = (params) => {
   console.log('Error Message:', errorMessage);
 
   return (
-    <Container maxWidth="sm"> {/* Change from xs to sm, md, lg, or xl */}
-    <TemporaryDrawer />
-    <Typography variant="h4" component="h2" align="center" gutterBottom> {/* Change variant for size */}
-      {params.title}
-    </Typography>
-    <CoachForm
-      method={method}
-      url={url}
-      initialValues={initialValues}
-      submitButtonText={submitButtonText}
-      errorMessage={errorMessage}
-    />
-    <Box sx={{ display: 'flex', justifyContent: 'flex-start', marginTop: '1rem' }}>
-      <Link to="/coach-dashboard">
-        <Button variant="contained" color="primary">
-          Return to coach-dashboard
-        </Button>
-      </Link>
-    </Box>
-  </Container>
+    <Container maxWidth="sm">
+      {/* Change from xs to sm, md, lg, or xl */}
+      <TemporaryDrawer />
+      <Typography variant="h4" component="h2" align="center" gutterBottom>
+        {/* Change variant for size */}
+        {params.title}
+      </Typography>
+      <CoachForm
+        method={method}
+        url={url}
+        initialValues={initialValues}
+        submitButtonText={submitButtonText}
+        errorMessage={errorMessage}
+      />
+      <Box sx={{ display: 'flex', justifyContent: 'flex-start', marginTop: '1rem' }}>
+        <Link to="/coach-dashboard">
+          <Button variant="contained" color="primary">
+            Return to coach-dashboard
+          </Button>
+        </Link>
+      </Box>
+    </Container>
   );
 };
 
