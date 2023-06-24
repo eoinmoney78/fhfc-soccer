@@ -3,11 +3,13 @@ import './App.css';
 import Auth from './components/auth/Auth';
 import { useState, useEffect } from 'react';
 import Dashboard from './components/dashboard/Dashboard';
-import Coaches from './components/coaches/Coaches';
+import CoachDashboard from './components/coaches/CoachDashboard';
 import Home from './components/home/Home';
 import News from './components/news/News';
 import Match from './components/matchschedule/Match';
 import PlayerPage from './components/players/PlayerPage';
+import CoachPage from './components/coaches/CoachPage';
+
 
 import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
@@ -127,29 +129,19 @@ function App() {
           <Switch checked={mode === 'dark'} />
         </IconButton>
       </nav>
-
       <Routes>
-        <Route path="/" element={<Auth updateToken={updateToken} />} />
-
-        <Route path="/home" element={<Home token={sessionToken}/>} />
-
-        <Route path="/coaches" element={<Coaches mode={mode} token={sessionToken} />} />
-
-
-      
-
-        <Route path="/add-player" element={<PlayerPage token={sessionToken} title={"New Player"} method={'POST'} />} />
-
-<Route path="/edit-player/:id" element={<PlayerPage token={sessionToken} title={"Edit Player"} method={'PUT'} />} />
-
-        <Route path="/dashboard" element={<Dashboard token={sessionToken}/>} />
-        <Route path="/matchschedule" element={<Match token={sessionToken} />} />
-
-
-        <Route path="/news" element={<News token={sessionToken} />} />
-
-
-      </Routes>
+  <Route path="/" element={<Auth updateToken={updateToken} />} />
+  <Route path="/home" element={<Home token={sessionToken} />} />
+  <Route path="/add-player" element={<PlayerPage token={sessionToken} title={"New Player"} method={'POST'} />} />
+  <Route path="/edit-player/:id" element={<PlayerPage token={sessionToken} title={"Edit Player"} method={'PUT'} />} />
+  <Route path="/coaches" element={<CoachDashboard />} />
+  <Route path="/add-coach" element={<CoachPage token={sessionToken} title={"New Coach"} method={'POST'} />} />
+  <Route path="/edit-coach/:id" element={<CoachPage token={sessionToken} title={"Edit Coach"} method={'PUT'} />} />
+  <Route path="/coach-dashboard" element={<CoachDashboard />} />
+  <Route path="/dashboard" element={<Dashboard token={sessionToken} />} />
+  <Route path="/matchschedule" element={<Match token={sessionToken} />} />
+  <Route path="/news" element={<News token={sessionToken} />} />
+</Routes>
     </div>
   </ThemeProvider>
 );

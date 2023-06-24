@@ -136,6 +136,7 @@ function PlayerForm(props) {
             required
             onChange={(e) => setFirstName(e.target.value)}
             fullWidth
+            disabled={!isAuthenticated}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -145,6 +146,7 @@ function PlayerForm(props) {
             required
             onChange={(e) => setLastName(e.target.value)}
             fullWidth
+            disabled={!isAuthenticated}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -154,6 +156,7 @@ function PlayerForm(props) {
             required
             onChange={(e) => setPosition(e.target.value)}
             fullWidth
+            disabled={!isAuthenticated}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -163,6 +166,7 @@ function PlayerForm(props) {
             required
             onChange={(e) => setAgeGroup(e.target.value)}
             fullWidth
+            disabled={!isAuthenticated}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -171,6 +175,7 @@ function PlayerForm(props) {
             value={team}
             onChange={(e) => setTeam(e.target.value)}
             fullWidth
+            disabled={!isAuthenticated}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -187,6 +192,7 @@ function PlayerForm(props) {
             value={favoritePlayer}
             onChange={(e) => setFavoritePlayer(e.target.value)}
             fullWidth
+            disabled={!isAuthenticated}
           />
         </Grid>
         <Grid item xs={12}>
@@ -196,6 +202,7 @@ function PlayerForm(props) {
             id="contained-button-file"
             type="file"
             onChange={(e) => setImageFile(e.target.files[0])}
+            disabled={!isAuthenticated}
           />
           <label htmlFor="contained-button-file">
             <Button variant="contained" component="span">
