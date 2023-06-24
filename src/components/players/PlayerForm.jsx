@@ -36,6 +36,10 @@ function PlayerForm(props) {
     }
   }, [props.initialValues]);
 
+
+
+
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
 

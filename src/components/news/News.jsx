@@ -166,6 +166,42 @@ function News() {
 
   return (
     <Container>
+      <h2 style={{ fontFamily: 'Arial, sans-serif', fontSize: '24px', fontWeight: 'bold' }}>
+        Slate Valley United News
+      </h2>
+      <DatePicker
+        selected={selectedDate}
+        onChange={setSelectedDate}
+        inline
+        highlightDates={highlightDates()}
+      />
+      {news.map((entry) => (
+        <div key={entry._id}>
+          <Typography variant="h4" gutterBottom>{entry.title}</Typography>
+          <Typography variant="body1">{entry.body}</Typography>
+          <Typography variant="body2" color="textSecondary">
+            Date to Publish: {new Date(entry.dateToPublish).toLocaleString()}
+          </Typography>
+          {isAdmin && (
+            <div>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => handleEdit(entry._id, entry.title, entry.body, entry.dateToPublish)}
+              >
+                Edit
+              </Button>
+              <Button
+                variant="contained"
+                color="secondary"
+                onClick={() => handleDelete(entry._id)}
+              >
+                Delete
+              </Button>
+            </div>
+          )}
+        </div>
+      ))}
       {isAdmin && (
         <form onSubmit={handleSubmit}>
           <Grid container spacing={2} direction="column">
@@ -207,42 +243,6 @@ function News() {
           </Grid>
         </form>
       )}
-  <h2 style={{ fontFamily: 'Arial, sans-serif', fontSize: '24px', fontWeight: 'bold' }}>
-        Slate Valley United News
-      </h2>
-      <DatePicker
-        selected={selectedDate}
-        onChange={setSelectedDate}
-        inline
-        highlightDates={highlightDates()}
-      />
-      {news.map((entry) => (
-        <div key={entry._id}>
-          <Typography variant="h4" gutterBottom>{entry.title}</Typography>
-          <Typography variant="body1">{entry.body}</Typography>
-          <Typography variant="body2" color="textSecondary">
-            Date to Publish: {new Date(entry.dateToPublish).toLocaleString()}
-          </Typography>
-          {isAdmin && (
-            <div>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => handleEdit(entry._id, entry.title, entry.body, entry.dateToPublish)}
-              >
-                Edit
-              </Button>
-              <Button
-                variant="contained"
-                color="secondary"
-                onClick={() => handleDelete(entry._id)}
-              >
-                Delete
-              </Button>
-            </div>
-          )}
-        </div>
-      ))}
     </Container>
   );
 }

@@ -38,23 +38,30 @@ function Match() {
 
   useEffect(() => {
     const fetchAdminStatus = async () => {
-      const adminResponse = await fetch(`${baseURL}/user/me`, {
-        method: 'GET',
-        headers: new Headers({
-          'Authorization': `${localStorage.getItem('token')}`,
-        }),
-      });
-
-      if (!adminResponse.ok) {
-        throw new Error(`Failed to fetch admin status, status = ${adminResponse.status}`);
+      try {
+        const adminResponse = await fetch(`${baseURL}/user/me`, {
+          method: 'GET',
+          headers: new Headers({
+            'Authorization': `${localStorage.getItem('token')}`,
+          }),
+        });
+  
+        if (!adminResponse.ok) {
+          throw new Error(`Failed to fetch admin status, status = ${adminResponse.status}`);
+        }
+  
+        const { user } = await adminResponse.json();
+        setIsAdmin(user.isAdmin);
+      } catch (error) {
+        // Handle the 403 Forbidden error by assuming the user is not an admin
+        setIsAdmin(false);
+        console.error('Failed to fetch admin status:', error.message);
       }
-
-      const { user } = await adminResponse.json();
-      setIsAdmin(user.isAdmin);
     }
-
+  
     fetchAdminStatus();
   }, []);
+  
 
   const handleEdit = async (matchId) => {
     if (!isAdmin) {
