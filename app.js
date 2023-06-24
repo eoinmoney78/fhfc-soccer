@@ -18,8 +18,8 @@ const { db } = require('./db');
 
 app.use(express.json());
 app.use(cors());
-const { playerController, userController, newsController, matchController } = require('./controllers');
-
+const { coachController, playerController, userController, newsController, matchController } = require('./controllers');
+app.use('/coach', coachController);
 app.use('/user', userController);
 app.use('/player', playerController);
 app.use('/match', matchController);
