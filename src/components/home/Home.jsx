@@ -13,7 +13,16 @@ const Home = () => {
         };
       }, []);
   return (
-    <Container maxWidth="xs" style={{ backgroundColor: '#3498db', borderRadius: '7px', overflow: 'auto' }}>
+    <Container
+    maxWidth="xs"
+    style={{
+      backgroundColor: '#3498db',
+      borderRadius: '7px',
+      overflow: 'auto',
+      border: '2px solid black',
+      boxShadow: '0 0 5px 2px rgba(0, 0, 0, 0.5)' // Add black border style
+    }}
+  >
  
       <nav>
         <TemporaryDrawer />
