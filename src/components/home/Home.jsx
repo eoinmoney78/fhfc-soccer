@@ -41,7 +41,7 @@ const Home = () => {
       <p>
         &nbsp; &nbsp; &nbsp; &nbsp; Welcome to the official website of Fair Haven Football Club!
 
-At Fair Haven FC, we are passionate about the beautiful game of football. Our club is built on a foundation of dedication, teamwork, and a love for the sport. We strive to provide a platform for players of all ages and skill levels to come together, develop their abilities, and enjoy the thrill of competitive football.
+At Slate Valley United , we are passionate about the beautiful game of football. Our club is built on a foundation of dedication, teamwork, and a love for the sport. We strive to provide a platform for players of all ages and skill levels to come together, develop their abilities, and enjoy the thrill of competitive football.
 
 With a rich history and a strong community presence, Fair Haven FC has become a beacon of football excellence in our region. Our club is committed to nurturing talent, fostering sportsmanship, and promoting a positive environment for players, coaches, and supporters alike.
 

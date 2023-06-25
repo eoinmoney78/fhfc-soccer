@@ -129,27 +129,29 @@ function Match() {
       <Grid container spacing={3}>
         {matches.map((match) => (
           <Grid item xs={12} md={6} lg={4} key={match._id}>
-            <Card sx={{ backgroundColor: 'royalblue' }}>
-              <CardContent>
-                <Typography variant="body1">
-                  Date: {new Date(match.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
-                </Typography>
-                <Typography variant="body1">
-                  Time: {match.time}
-                </Typography>
-                <Typography variant="body1">Teams: {match.team1} vs {match.team2}</Typography>
-                <Typography variant="body1">Location: {match.location}</Typography>
-                <Typography variant="body1">Age Group: {match.ageGroup}</Typography>
+    <Card sx={{ backgroundColor: 'royalblue', border: '2px solid white', boxShadow: '0px 0px 15px rgba(0, 0, 0, 0.8)' }}>
+  <CardContent>
+    <Typography variant="body1">
+      Date: {new Date(match.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+    </Typography>
+    <Typography variant="body1">
+      Time: {match.time}
+    </Typography>
+    <Typography variant="body1">Teams: {match.team1} vs {match.team2}</Typography>
+    <Typography variant="body1">Location: {match.location}</Typography>
+    <Typography variant="body1">Age Group: {match.ageGroup}</Typography>
 
-                {isAdmin && (
-                  <Box mt={2}>
-                    <Button onClick={() => handleEdit(match._id)} variant="contained" color="primary">Edit</Button>
-                    <Button onClick={() => handleDelete(match._id)} variant="contained" color="error" sx={{ marginLeft: '8px' }}>Delete
-                    </Button>
-                  </Box>
-                )}
-              </CardContent>
-            </Card>
+    {isAdmin && (
+      <Box mt={2}>
+        <Button onClick={() => handleEdit(match._id)} variant="contained" color="primary">Edit</Button>
+        <Button onClick={() => handleDelete(match._id)} variant="contained" color="error" sx={{ marginLeft: '8px' }}>Delete
+        </Button>
+      </Box>
+    )}
+  </CardContent>
+</Card>
+
+
           </Grid>
         ))}
       </Grid>
