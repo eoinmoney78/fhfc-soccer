@@ -1,11 +1,14 @@
 //Dependencies
 
 const mongoose = require('mongoose');
-const url = 'wv4zjxc';
+
+const url = process.env.URL_MONGO;
 const database = 'fhsc-soccer';
 const userName = process.env.DBUSERNAME;
 const password = process.env.DBPASSWORD;
-
+console.log('URL:', url);
+console.log('Username:', userName);
+console.log('Password:', password);
 
 const db = async () => {
     try {

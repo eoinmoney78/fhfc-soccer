@@ -6,6 +6,7 @@ const express = require('express');
 const app = express();
 
 const cloudinary = require('./cloudinaryConfig');
+
 const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 const cors = require('cors');
@@ -28,11 +29,7 @@ app.use('/news', newsController);
 
 
 app.post('/image/upload', upload.single('image'), (req, res) => {
-    // req.file is the 'image' file
-    // req.body will hold the text fields, if there were any
 
-    // console.log('Request body:', req.body);
-    // console.log('Request file:', req.file);
 
     const playerData = req.body;
 
